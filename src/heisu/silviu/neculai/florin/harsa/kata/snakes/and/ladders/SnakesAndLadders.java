@@ -31,7 +31,7 @@ public class SnakesAndLadders {
 
 	private static boolean checkIfSnake(int currentPosition, int diceValue, int playerNumber) {
 		if (board.get(currentPosition + diceValue).getPowerUp() == "Snake") {
-			for (int i = currentPosition + diceValue-1; i >= 0; i--) {
+			for (int i = currentPosition + diceValue - 1; i >= 0; i--) {
 				if (board.get(i).getPowerUp() == "Snake") {
 					playerPositions.put("Player " + playerNumber, i);
 					board.get(i).setPlayerStanding("Player " + playerNumber);
@@ -44,7 +44,7 @@ public class SnakesAndLadders {
 
 	private static boolean checkIfLadder(int currentPosition, int diceValue, int playerNumber) {
 		if (board.get(currentPosition + diceValue).getPowerUp() == "Ladder") {
-			for (int i = currentPosition + diceValue+1; i < 100; i++) {
+			for (int i = currentPosition + diceValue + 1; i < 100; i++) {
 				if (board.get(i).getPowerUp() == "Ladder") {
 					playerPositions.put("Player " + playerNumber, i);
 					board.get(i).setPlayerStanding("Player " + playerNumber);
@@ -56,17 +56,19 @@ public class SnakesAndLadders {
 	}
 
 	private static void initiateMovement(int diceValue, int playerNumber, int currentPosition) {
-		if(checkIfSnake(currentPosition, diceValue, playerNumber)==false && checkIfLadder(currentPosition, diceValue, playerNumber)==false)
-		
+		if (checkIfSnake(currentPosition, diceValue, playerNumber) == false
+				&& checkIfLadder(currentPosition, diceValue, playerNumber) == false)
+
 		{
-			if (currentPosition + diceValue >= 100) {
+			if (currentPosition + diceValue == 100) {
 				System.out.println("Player " + playerNumber + " won!");
 				System.exit(1);
 				SnakesAndLadders();
-			} else {
+			} else if (currentPosition + diceValue < 100) {
 				playerPositions.put("Player " + playerNumber, currentPosition + diceValue);
 				board.get(currentPosition + diceValue).setPlayerStanding("Player " + playerNumber);
 			}
+
 		}
 	}
 
