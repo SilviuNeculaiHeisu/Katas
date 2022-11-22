@@ -1,13 +1,14 @@
 package heisu.silviu.neculai.florin.harsa.kata.tennis;
 
 public class TennisScoreBoard {
-	
+
 	public String player1Score = "0";
 	public String player2Score = "0";
 	public boolean gameOver = false;
-	
+
 	public void addPoint(TennisPlayer player1, TennisPlayer player2) {
-		if(player1.winPoint(player1, player2) == "player1" && gameOver == false) {
+
+		if (player1.winPoint(player1, player2) == "player1" && gameOver == false) {
 			System.out.println("player1 scored");
 			if (player1Score == "0") {
 				player1Score = "15";
@@ -15,7 +16,7 @@ public class TennisScoreBoard {
 				player1Score = "30";
 			} else if (player1Score == "30") {
 				player1Score = "40";
-			} else if(player1Score == "40") { 
+			} else if (player1Score == "40") {
 				if (player2Score != "40" && player2Score != "A") {
 					System.out.println("Player1 WON");
 					gameOver = true;
@@ -28,7 +29,7 @@ public class TennisScoreBoard {
 				System.out.println("Player1 WON");
 				gameOver = true;
 			}
-		} else if(player1.winPoint(player1, player2) == "player2" && gameOver == false) {
+		} else if (gameOver == false) {
 			System.out.println("player2 scored");
 			if (player2Score == "0") {
 				player2Score = "15";
@@ -36,7 +37,7 @@ public class TennisScoreBoard {
 				player2Score = "30";
 			} else if (player2Score == "30") {
 				player2Score = "40";
-			} else if(player2Score == "40") { 
+			} else if (player2Score == "40") {
 				if (player1Score != "40" && player1Score != "A") {
 					System.out.println("Player2 WON");
 					gameOver = true;
@@ -50,14 +51,14 @@ public class TennisScoreBoard {
 				gameOver = true;
 			}
 		}
-		
+
 		if (gameOver == false) {
-		System.out.println(ShwoScore());
+			System.out.println(ShwoScore());
 		}
 	}
-	
+
 	public String ShwoScore() {
 		return "Player1 " + player1Score + " : " + player2Score + " Player2";
 	}
-	
+
 }
